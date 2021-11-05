@@ -1,4 +1,6 @@
-<h1>{{ question.question_text }}</h1>
+{% extends 'base.html' %}
+{% block content %}
+<h3>{{ question.question_text }}</h3>
 
 <ul>
     {% for choice in question.choice_set.all %} 
@@ -6,5 +8,6 @@
     {% endfor %} 
 </ul>
 
-<a href="{% url 'enquete:detail' question.id %}">Votar novamente?</a><br>
-<a href="{% url 'enquete:index' %}">Voltar ao início!</a>
+<a class="pure-button" href="{% url 'enquete:detail' question.id %}">Votar novamente?</a><br>
+<a class="pure-button" href="{% url 'enquete:index' %}">Voltar ao início!</a>
+{% endblock %} 

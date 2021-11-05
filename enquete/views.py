@@ -68,4 +68,4 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse('enquete:results', args=(question_id,)))
 
 def contact(request):
-    return render(request, 'contato.html')
+    return render(request, 'contact.html')
