@@ -9,7 +9,6 @@
         <!-- Removendo URLs codificadas pela tag %url% namespace:template-->
         <li>
             <a class="" href="{% url 'enquete:detail' question.id %}">{{ question.question_text }}</a>
-            <a class="pure-button" href="{% url 'enquete:results' question.id %}">Resultados</a>
         </li>
         {% endfor %} 
     </ul>
