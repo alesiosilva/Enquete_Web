@@ -50,8 +50,9 @@ def results(request, question_id):
     return render(request, 'results.html', {'question': question})
 
 def allresults(request):
-    questions = get_object_or_404(Question)
-    return render(request, 'results.html', {'questions': questions})
+    latest_question_list = Question.objects.order_by('-pub_date')
+    context = {'latest_question_list': latest_question_list}
+    return render(request, 'results.html', context)
 
 # ex: //5/vote
 def vote(request, question_id):

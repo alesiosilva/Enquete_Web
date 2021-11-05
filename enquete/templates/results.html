@@ -1,13 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
-<h3>{{ question.question_text }}</h3>
+{% if latest_question_list %}
+    <ul>
+        {% for l in latest_question_list %} 
+            <li>
+                <h3>{{ l.question_text }}</h3>
+                <ul>
+                    {% for q in l.choice_set.all %} 
+                    <li>{{ q.choice_text }} || {{ q.votes }} voto{{ q.votes|pluralize }}</li>
+                    {% endfor %} 
+                </ul>
+            </li>    
+        {% endfor %} 
+    </ul>
+{% else %} 
+    <h3>{{ question.question_text }}</h3>
 
-<ul>
-    {% for choice in question.choice_set.all %} 
-    <li>{{ choice.choice_text }} || {{ choice.votes }} voto{{ choice.votes|pluralize }}</li>
-    {% endfor %} 
-</ul>
+    <ul>
+        {% for choice in question.choice_set.all %} 
+        <li>{{ choice.choice_text }} || {{ choice.votes }} voto{{ choice.votes|pluralize }}</li>
+        {% endfor %} 
+    </ul>
 
-<a class="pure-button" href="{% url 'enquete:detail' question.id %}">Votar novamente?</a>
-<a class="pure-button" href="{% url 'enquete:index' %}">Voltar ao início!</a>
+    <a class="pure-button" href="{% url 'enquete:detail' question.id %}">Votar novamente?</a>
+    <a class="pure-button" href="{% url 'enquete:index' %}">Voltar ao início!</a>
+{% endif %} 
 {% endblock %} 
