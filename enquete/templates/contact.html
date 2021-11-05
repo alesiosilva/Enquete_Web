@@ -1,9 +1,11 @@
 {% extends 'base.html' %} 
 {% block content %} 
-<form class="pure-form">
+<form class="pure-form pure-form-stacked">
     <fieldset>
         <legend><h3>Página de Contato:</h3></legend>
-        <textarea></textarea>
+        <label>Nome: <input type="text"></label>
+        <label>E-mail: <input type="text"></label>
+        <label>Mensagem: <textarea></textarea></label>
     </fieldset>
     <input class="pure-button" type="submit" name="Enviar">
 </form>
