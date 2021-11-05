@@ -21,3 +21,13 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+
+class Contact(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField(max_length=100)
+    phone = models.IntegerField(null=True)
+    msg = models.TextField()
+    data = models.DateTimeField('data contato', auto_now=True)
+
+    def __str__(self):
+        return self.name
