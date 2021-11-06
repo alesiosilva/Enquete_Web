@@ -64,7 +64,7 @@ def vote(request, question_id):
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
         # Mostra novamente o formulário de voto
-        return render(request, 'detail.html', {
+        return render(request, 'enquete/detail.html', {
             'question': question,
             'error_message': "Você não marcou uma escolha válida!",
         })
