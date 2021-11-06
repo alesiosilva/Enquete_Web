@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends './base.html' %}
 {% block content %}
 <form class="pure-form" action="{% url 'enquete:vote' question.id %}" method="post">
     {% csrf_token %} 

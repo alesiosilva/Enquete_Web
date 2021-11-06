@@ -27,7 +27,7 @@ class Contact(models.Model):
     email = models.EmailField(max_length=100)
     phone = models.IntegerField(null=True)
     msg = models.TextField()
-    data = models.DateTimeField('data contato', auto_now=True)
+    date = models.DateTimeField('data contato', default=timezone.now)
 
     def __str__(self):
         return self.name

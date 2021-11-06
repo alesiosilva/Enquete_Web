@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.views import *
 
 urlpatterns = [
-    path('enquete/', include('enquete.urls')),
+    path('enquetes/', include('enquete.urls')),
+    path('cursos/', include('curso.urls')),
     path('admin/', admin.site.urls),
 ]

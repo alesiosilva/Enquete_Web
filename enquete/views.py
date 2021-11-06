@@ -14,7 +14,7 @@ from .models import Choice, Contact, Question
     output = ', '.join([q.question_text for q in latest_question_list])
     
     # Retorno de template e contexto direto no HttpResponse
-    template = loader.get_template('index.html')
+    template = loader.get_template('enquete/index.html')
     context = {'latest_question_list': latest_question_list}   
     return HttpResponse(template.render(context, request))'''
     
@@ -23,7 +23,7 @@ def index(request):
 
     # Atalho render para retornar o template e contexto
     context = {'latest_question_list': latest_question_list}
-    return render(request, 'index.html', context)
+    return render(request, 'enquete/index.html', context)
 
 # ex: /enquete/5/
 '''def detail(request, question_id):
@@ -33,12 +33,12 @@ def index(request):
         question = Question.objects.get(pk=question_id)
     except Question.DoesNotExist:
         raise Http404('Question does not exist!')
-    return render(request, 'detail.html', {'question': question})'''
+    return render(request, 'enquete/detail.html', {'question': question})'''
 
 def detail(request, question_id):
     # Atalho para retornar diretamente o objeto se não houver erro
     question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'detail.html', {'question': question})
+    return render(request, 'enquete/detail.html', {'question': question})
 
 # ex: /enquete/5/results
 '''def results(request, question_id):
@@ -48,12 +48,12 @@ def detail(request, question_id):
 
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'results.html', {'question': question})
+    return render(request, 'enquete/results.html', {'question': question})
 
 def allresults(request):
     latest_question_list = Question.objects.order_by('-pub_date')
     context = {'latest_question_list': latest_question_list}
-    return render(request, 'results.html', context)
+    return render(request, 'enquete/results.html', context)
 
 # ex: //5/vote
 def vote(request, question_id):
@@ -82,5 +82,5 @@ def contact(request):
     contato = ContactForm(request.POST or None)
     if contato.is_valid():
         contato.save()
-        return redirect('index')
-    return render(request, 'contact.html', {'contato': contato})
+        return redirect('enquete:index')
+    return render(request, 'enquete/contact.html', {'contato': contato})

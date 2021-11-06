@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Choice, Question
+from django.db.models import fields
+from .models import *
 # Register your models here.
 
 #class ChoiceInline(admin.StackedInline):
@@ -20,6 +21,11 @@ class QuestionAdmin(admin.ModelAdmin):
     # Adicionando colunas na administração de escolhas
     list_display = ('question_text', 'pub_date')
 
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone', 'date')
+    search_fields = ('name', 'email', 'phone')
+
 # admin.site.register(Question)
 # admin.site.register(Choice)
 admin.site.register(Question, QuestionAdmin)
+admin.site.register(Contact, ContactAdmin)
