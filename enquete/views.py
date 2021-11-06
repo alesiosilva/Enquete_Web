@@ -1,11 +1,11 @@
 from django.forms import ModelForm
 from django.http.response import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
-from django.http import HttpResponse
+#from django.http import HttpResponse
 #from django.template import context, loader
 from django.urls import reverse
 
-from .models import Choice, Contact, Question
+from .models import Choice, Question
 
 # Creating views here.
 # ex: /enquete/ 
@@ -73,14 +73,3 @@ def vote(request, question_id):
         selected_choice.save()
         return HttpResponseRedirect(reverse('enquete:results', args=(question_id,)))
 
-class ContactForm(ModelForm):
-    class Meta:
-        model = Contact
-        fields = '__all__'
-
-def contact(request):
-    contato = ContactForm(request.POST or None)
-    if contato.is_valid():
-        contato.save()
-        return redirect('enquete:index')
-    return render(request, 'enquete/contact.html', {'contato': contato})

@@ -19,3 +19,14 @@ class Course(models.Model):
     class Meta:
         verbose_name = 'Curso'
         verbose_name_plural = 'Cursos'
+
+class Contact(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='Curso')
+    name = models.CharField(max_length=200)
+    email = models.EmailField(max_length=100)
+    phone = models.IntegerField(null=True)
+    msg = models.TextField()
+    date = models.DateTimeField('data contato', default=timezone.now)
+
+    def __str__(self):
+        return self.name

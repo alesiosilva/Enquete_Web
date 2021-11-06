@@ -21,11 +21,7 @@ class QuestionAdmin(admin.ModelAdmin):
     # Adicionando colunas na administração de escolhas
     list_display = ('question_text', 'pub_date')
 
-class ContactAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'phone', 'date')
-    search_fields = ('name', 'email', 'phone')
 
 # admin.site.register(Question)
 # admin.site.register(Choice)
 admin.site.register(Question, QuestionAdmin)
-admin.site.register(Contact, ContactAdmin)

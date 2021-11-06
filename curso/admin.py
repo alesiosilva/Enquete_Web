@@ -1,4 +1,4 @@
-from .models import Course
+from .models import *
 from django.contrib import admin
 
 # Register your models here.
@@ -7,5 +7,10 @@ class CourseAdmin(admin.ModelAdmin):
     search_fields = ['name', 'slug']
     prepopulated_fields = {'slug': ('name',)}
 
-
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone', 'date')
+    search_fields = ('name', 'email', 'phone')
+    
 admin.site.register(Course, CourseAdmin)
+
+admin.site.register(Contact, ContactAdmin)
