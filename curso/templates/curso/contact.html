@@ -1,0 +1,11 @@
+{% extends './base.html' %} 
+{% block content %} 
+<form class="pure-form pure-form-stacked" action="." method="POST">
+    <fieldset>
+        <legend><h3>Página de Contato:</h3></legend>
+    </fieldset>
+    {% csrf_token %} 
+    {{ contato.as_p }} 
+    <input class="pure-button" type="submit" name="Enviar">
+</form>
+{% endblock %} 
