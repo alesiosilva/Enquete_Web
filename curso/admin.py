@@ -8,9 +8,9 @@ class CourseAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'phone', 'date')
+    list_display = ('name', 'course', 'email', 'phone', 'date')
     search_fields = ('name', 'email', 'phone')
-    
+
 admin.site.register(Course, CourseAdmin)
 
 admin.site.register(Contact, ContactAdmin)

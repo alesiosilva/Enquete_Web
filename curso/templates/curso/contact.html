@@ -4,8 +4,12 @@
     <fieldset>
         <legend><h3>Página de Contato:</h3></legend>
     </fieldset>
-    {% csrf_token %} 
-    {{ contato.as_p }} 
+    <table>
+        <tbody>
+            {% csrf_token %} 
+            {{ contato.as_table }} 
+        </tbody>
+    </table>
     <input class="pure-button" type="submit" name="Enviar">
 </form>
 {% endblock %} 
