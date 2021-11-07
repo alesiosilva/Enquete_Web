@@ -132,7 +132,7 @@ MEDIA_ROOT = BASE_DIR / 'djangosite/media'
 
 # E-mails
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = 'Alesio Torres'
+DEFAULT_FROM_EMAIL = 'Django Site <allessyu@hotmail.com>'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.office365.com'
 EMAIL_HOST_USER = 'allessyu@hotmail.com'

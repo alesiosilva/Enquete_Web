@@ -4,6 +4,9 @@
     <fieldset>
         <legend><h3>Página de Contato:</h3></legend>
     </fieldset>
+    {% if alert %} 
+    <h4 style="color: red;">{{ alert }}</h4>
+    {% endif %} 
     <table>
         <tbody>
             {% csrf_token %} 
