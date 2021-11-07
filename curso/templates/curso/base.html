@@ -24,9 +24,15 @@
                 <li class="pure-menu-item">
                     <a href="{% url 'curso:contact' %}" class="pure-menu-link">Contato</a>
                 </li>
+                {% if user.is_authenticated %} 
+                <li class="pure-menu-item">
+                    <a href="{% url 'user:logout' %}" class="pure-menu-link">Sair</a>
+                </li>
+                {% else %} 
                 <li class="pure-menu-item">
                     <a href="{% url 'user:login' %}" class="pure-menu-link">Entrar</a>
                 </li>
+                {% endif %} 
             </ul>
         </div>
         <div class="">
