@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'user.apps.UserConfig',
     'curso.apps.CursoConfig',
     'enquete.apps.EnqueteConfig',
     'django.contrib.admin',
@@ -138,3 +139,8 @@ EMAIL_HOST = 'smtp.office365.com'
 EMAIL_HOST_USER = 'allessyu@hotmail.com'
 EMAIL_HOST_PASSWORD = 'Micr@2021'
 EMAIL_PORT = 587
+
+# AUTH
+LOGIN_URL = 'user:login'
+LOGIN_REDIRECT_URL = 'curso:index'
+LOGOUT_URL = 'user:logout'

@@ -19,6 +19,7 @@ from django.views import *
 
 urlpatterns = [
     path('enquetes/', include('enquete.urls')),
+    path('user/', include('user.urls')),
     path('', include('curso.urls')),
     path('admin/', admin.site.urls),
 ]

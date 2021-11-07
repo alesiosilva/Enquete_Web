@@ -10,7 +10,7 @@
 <body>
     <div id="body" style="width:1200px; margin-left: auto; margin-right: auto;">
         <div class="pure-menu pure-menu-horizontal">
-            <a href="{% url 'curso:index' %}" class="pure-menu-heading pure-menu-link">ENQUETES - DjangoSite</a>
+            <a href="{% url 'curso:index' %}" class="pure-menu-heading pure-menu-link">CURSOS - DjangoSite</a>
             <ul class="pure-menu-list">
                 <li class="pure-menu-item">
                     <a href="{% url 'curso:index' %}" class="pure-menu-link">Cursos</a>
@@ -23,6 +23,9 @@
                 </li>
                 <li class="pure-menu-item">
                     <a href="{% url 'curso:contact' %}" class="pure-menu-link">Contato</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="{% url 'user:login' %}" class="pure-menu-link">Entrar</a>
                 </li>
             </ul>
         </div>
