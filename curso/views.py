@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.core.mail import send_mail
 from django.forms import ModelForm
-from django.forms.utils import ErrorDict, ErrorList
 from django.shortcuts import get_object_or_404, render, redirect
 
 from .models import *
@@ -24,14 +23,14 @@ class ContactForm(ModelForm):
 
 def contact(request):
     contato = ContactForm(request.POST or None)
+    course = Course.objects.get(pk=request.POST['course'])
     if contato.is_valid():
         contato.save()
         name = contato.cleaned_data['name']
         email = contato.cleaned_data['email']
         msg = contato.cleaned_data['msg']
         date = contato.cleaned_data['date']
-        
-        subject = 'Contato sobre o curso: '
+        subject = 'Contato sobre o curso: ' + course.name
         message = 'Olá prezado, %(name)s\nRecebemos sua solicitação através do nosso formulário Django: \nE-mail: %(email)s\nMensagem: %(msg)s \nData: %(date)s'
         context = {'name': name, 'email': email, 'msg': msg, 'date': date,}
         message = message % context
