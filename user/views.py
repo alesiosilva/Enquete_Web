@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render, get_object_or_404
 #from django.contrib.auth.forms import UserCreationForm
@@ -26,4 +27,10 @@ def register(request):
         # return redirect(settings.LOGIN_URL)
     context = {'form': form}
     return render(request, template_name, context)
-    
+
+# View para painel do usuário com requisição de login
+# Redireciona ao login automaticamente caso não esteja logado
+@login_required    
+def dashboard(request):
+    template_name = 'user/dashboard.html'
+    return render(request, template_name)

@@ -5,8 +5,8 @@ from .models import User
 # Formulário para cadastro do usuário
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(label='E-mail')
-    firstname = forms.CharField(label='Nome')
-    lastname = forms.CharField(label='Sobrenome')
+    first_name = forms.CharField(label='Nome')
+    last_name = forms.CharField(label='Sobrenome')
     #birthdate = forms.DateField(label='Data de nascimento')
 
     # Função para validar email já cadastrado
