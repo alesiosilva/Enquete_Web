@@ -1,8 +1,14 @@
 {% extends 'user/base.html' %} 
 {% block content %} 
-<div class="pure-g-r content-ribbon">
+<div class="pure-g content-ribbon">
+    <div class="pure-u-1">
+        <ul class="breadcrumb">
+            {% block breadcrumb %} 
+            <a href="{% url 'user:dashboard' %}">Meu Painel</a>
+            {% endblock %} 
+        </ul>
+    </div>
     <div class="pure-u-1-3">
-        <h2>Meu Painel</h2>
         <div class="pure-meu pure-menu-open" >
             <a class="pure-menu-heading">Meus Cursos</a>
             <ul>
@@ -13,15 +19,17 @@
         <div class="pure-meu pure-menu-open" >
         <a class="pure-menu-heading">Minha Conta</a></li>
             <ul>
-                <li><a href="#">Editar Conta</a></li>
+                <li><a href="{% url 'user:edit' %}">Editar Conta</a></li>
                 <li><a href="#">Alterar Senha</a></li>
             </ul>
         </div>
     </div>
     <div class="pure-u-2-3">
         <div class="inner">
+            {% block dashboard_content %} 
             <p><strong>Usuário: </strong>{{ user }}</p>
             <p><strong>Email: </strong>{{ user.email }}</p>
+            {% endblock %} 
         </div>
     </div>
 </div>

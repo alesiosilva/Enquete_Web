@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render, get_object_or_404
 #from django.contrib.auth.forms import UserCreationForm
-from .forms import RegisterForm
+from .forms import RegisterForm, EditUserForm
 from django.conf import settings
 
 # Create your views here.
@@ -34,3 +34,16 @@ def register(request):
 def dashboard(request):
     template_name = 'user/dashboard.html'
     return render(request, template_name)
+
+# View para edição dos campos do usuário
+@login_required
+def edit(request):
+    template_name = 'user/edit.html'
+    context = {}
+    form = EditUserForm(request.POST or None, instance=request.user)
+    if form.is_valid():
+        form.save()
+        form = EditUserForm(instance=request.user)
+        context['success'] = True
+    context['form'] = form
+    return render(request, template_name, context)

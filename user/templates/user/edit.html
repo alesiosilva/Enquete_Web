@@ -1,0 +1,26 @@
+{% extends 'user/dashboard.html' %} 
+{% block breadcrumb %} 
+    {{ block.super }}
+    / <a href="{% url 'user:edit' %}">Editar Conta</a></li>
+{% endblock %} 
+
+{% block dashboard_content %} 
+<form class="pure-form pure-form-stacked" action="." method="POST">
+    {% csrf_token %} 
+    {% if success %} 
+    <p><strong>Os dados foram alterados com sucesso.</strong></p>
+    {% endif %}
+    <fieldset>
+        <legend>Editar Conta</legend>
+        {{ form.non_field_errors }}
+        {% for field in form %} 
+        <div class="pure-control-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+        </div>
+        {% endfor %} 
+    </fieldset>
+    <button class="pure-button pure-button-primary" type="submit">Salvar</button>
+</form>
+{% endblock %} 
