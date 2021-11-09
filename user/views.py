@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render, get_object_or_404
-#from django.contrib.auth.forms import UserCreationForm
+
 from .forms import RegisterForm, EditUserForm
+from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from django.conf import settings
 
 # Create your views here.
@@ -45,5 +46,17 @@ def edit(request):
         form.save()
         form = EditUserForm(instance=request.user)
         context['success'] = True
+    context['form'] = form
+    return render(request, template_name, context)
+
+# View para alterar senha do usuário
+@login_required
+def edit_password(request):
+    template_name = 'user/edit_password.html'
+    context = {}
+    form = PasswordChangeForm(data=request.POST, user=request.user)
+    if form.is_valid():
+        form.save()
+        context['success'] = True 
     context['form'] = form
     return render(request, template_name, context)
