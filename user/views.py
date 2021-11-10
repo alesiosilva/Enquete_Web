@@ -6,8 +6,6 @@ from .forms import RegisterForm, EditUserForm
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from django.conf import settings
 
-# Create your views here.
-
 # View para cadastro de usuários no django
 def register(request):
     template_name = 'user/register.html' 
@@ -38,8 +36,8 @@ def dashboard(request):
 
 # View para edição dos campos do usuário
 @login_required
-def edit(request):
-    template_name = 'user/edit.html'
+def edit_user(request):
+    template_name = 'user/edit_user.html'
     context = {}
     form = EditUserForm(request.POST or None, instance=request.user)
     if form.is_valid():

@@ -9,7 +9,8 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('logout/', auth_views.LogoutView.as_view(next_page = 'curso:index'), name='logout'),
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('edit/', views.edit, name='edit'),
+    path('edit_user/', views.edit_user, name='edit_user'),
     path('edit_password/', views.edit_password, name='edit_password'),
+    path('recovery/', auth_views.PasswordResetView.as_view(), name='recovery')
 
 ]
