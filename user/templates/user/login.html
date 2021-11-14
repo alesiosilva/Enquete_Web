@@ -18,5 +18,5 @@
     </div>
 </form>
 <p>Não é cadastrado? <a href="{% url 'user:register' %}">Cadastre-se</a></p>
-<p>Esqueceu a senha? <a href="#">Nova senha</a></p>
+<p>Esqueceu a senha? <a href="{% url 'user:password_reset' %}">Nova senha</a></p>
 {% endblock %}
