@@ -11,6 +11,9 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'course', 'email', 'phone', 'date')
     search_fields = ('name', 'email', 'phone')
 
-admin.site.register(Course, CourseAdmin)
+class EnrollmentAdmin(admin.ModelAdmin):
+    list_display = ('user', 'course', 'status', 'created_at', 'updated_at')
 
+admin.site.register(Course, CourseAdmin)
 admin.site.register(Contact, ContactAdmin)
+admin.site.register(Enrollment, EnrollmentAdmin)

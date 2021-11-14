@@ -2,4 +2,5 @@
 {% block content %} 
 <h2>Curso: {{ curso.name }}</h2>
 <div>{{ curso.description|linebreaks }}</div>
+<a class="pure-button pure-button-primary" href="{% url 'curso:enrollment' curso.slug %}">Inscreva-se</a>
 {% endblock %} 

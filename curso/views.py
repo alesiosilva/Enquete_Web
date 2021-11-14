@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.decorators import login_required
 
 from .models import *
 from .forms import *
@@ -52,3 +53,12 @@ def contact(request):
         return render(request, 'curso/contact.html', {'form': form, 'alert': alert})
     return render(request, 'curso/contact.html', {'form': form})
 '''
+@login_required
+def enrollment(request, slug):
+    course = get_object_or_404(Course, slug=slug)
+    enrollment, created = Enrollment.objects.get_or_create(
+        user=request.user, course=course
+    )
+    if created:
+        enrollment.active()
+    return redirect('user:dashboard')
