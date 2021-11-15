@@ -1,0 +1,14 @@
+{% extends 'user/base.html' %} 
+{% block content %} 
+<form class="pure-form pure-form-stacked" action="" method="POST">
+    <fieldset>
+        <legend>Senha Restaurada com Sucesso!</legend>
+    </fieldset>
+    <div class="pure-control-group">
+        <p>Senha restaurada com sucesso.</p>
+    </div>
+    <div class="pure-controls">
+        <p><a class="pure-button pure-button-primary" href="{% url 'user:login' %}">Efetuar Login</a></p>
+    </div>
+</form>
+{% endblock %}

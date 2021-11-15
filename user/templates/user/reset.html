@@ -1,0 +1,22 @@
+{% extends 'user/base.html' %} 
+{% block content %} 
+<form class="pure-form pure-form-stacked" action="." method="POST">
+    <fieldset>
+        <legend>Restaurar Senha</legend>
+    </fieldset>
+    {% csrf_token %} 
+    {{ form.non_field_errors }} 
+    {% for field in form %} 
+    <div class="pure-control-group">
+        {{ field.label_tag }} 
+        {{ field }}
+        {{ field.errors }}
+    </div>
+    {% endfor %} 
+    <div class="pure-controls">
+        <button type="submit" class="pure-button pure-button-primary" >Enviar</button>
+    </div>
+</form>
+<p>Não é cadastrado? <a href="{% url 'user:register' %}">Cadastre-se</a></p>
+<p>Já possui cadastro? <a href="{% url 'user:login' %}">Efetue Login</a></p>
+{% endblock %}

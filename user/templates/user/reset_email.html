@@ -1,0 +1,4 @@
+Recebemos sua requisição para restauração de senha do E-mail: {{ email }} no site {{ site.name }}.
+
+Siga o link a seguir para restaurar sua senha: {{ protocol }}://{{ domain }}{% url 'user:password_reset_confirm' uidb64=uid token=token %}
+
