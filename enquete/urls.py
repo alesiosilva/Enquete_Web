@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from enquete import views
 
 # Namespace da aplicação
 app_name = 'enquete'
