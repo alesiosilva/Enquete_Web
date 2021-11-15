@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render, get_object_or_404
 from django.conf import settings
 
-from .forms import RegisterForm, EditUserForm
+from user.forms import RegisterForm, EditUserForm
 from curso.models import Enrollment
 
 # View para cadastro de usuários no django
