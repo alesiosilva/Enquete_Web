@@ -1,3 +1,4 @@
+from django import contrib
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -6,6 +7,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.conf import settings
 
 from .forms import RegisterForm, EditUserForm
+#from CursoDjango2.curso.models import Enrollment
 
 # View para cadastro de usuários no django
 def register(request):
@@ -35,7 +37,11 @@ def register(request):
 @login_required    
 def panel(request):
     template_name = 'user/panel.html'
-    return render(request, template_name)
+
+    # Contexto para carregar Enrollments do usuário
+    context = {}
+    #context['enrollments'] = Enrollment.objects.filter(user=request.user)
+    return render(request, template_name, context)
 
 # View para edição dos campos do usuário
 @login_required
