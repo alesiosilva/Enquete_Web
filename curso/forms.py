@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import *
+from curso.models import Contact
 from django.core.mail import send_mail
 from djangosite.mail import send_mail_template
 

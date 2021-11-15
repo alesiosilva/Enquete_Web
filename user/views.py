@@ -7,7 +7,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.conf import settings
 
 from .forms import RegisterForm, EditUserForm
-#from CursoDjango2.curso.models import Enrollment
+from curso.models import Enrollment
 
 # View para cadastro de usuários no django
 def register(request):
@@ -26,7 +26,7 @@ def register(request):
         )
         login(request, user)
         # Retorno para index após cadastro
-        return redirect('curso:index')
+        return redirect('user:panel')
         
         # Retorno para tela de URL após cadastro
         # return redirect(settings.LOGIN_URL)
@@ -37,10 +37,10 @@ def register(request):
 @login_required    
 def panel(request):
     template_name = 'user/panel.html'
-
-    # Contexto para carregar Enrollments do usuário
     context = {}
-    #context['enrollments'] = Enrollment.objects.filter(user=request.user)
+
+    # Contexto para carregar Enrollments do usuário numa view específica
+    # context['enrollments'] = Enrollment.objects.filter(user=request.user)
     return render(request, template_name, context)
 
 # View para edição dos campos do usuário
