@@ -2,6 +2,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from .models import *
 from .forms import *
@@ -25,16 +26,10 @@ def contact(request):
         form.send_mail(course)
         form.save()
         form = ContactForm()
-        alert = 'Obrigado, recebemos sua mensagem com sucesso!'
-        context = {
-            'form': form,
-            'alert': alert,
-        }
-        return render(request, 'curso/contact.html', context)
+        messages.success(request, 'Obrigado, recebemos sua mensagem de contato e retornaremos em breve.')
+        return render(request, 'curso/contact.html', {'form': form})
     return render(request, 'curso/contact.html', {'form': form})
         
-    
-
 ''' Antigo contato com envio de e-mail integrado a view
 def contact(request):
     form = ContactForm(request.POST or None)
@@ -53,6 +48,7 @@ def contact(request):
         return render(request, 'curso/contact.html', {'form': form, 'alert': alert})
     return render(request, 'curso/contact.html', {'form': form})
 '''
+
 @login_required
 def enrollment(request, slug):
     course = get_object_or_404(Course, slug=slug)
@@ -61,4 +57,7 @@ def enrollment(request, slug):
     )
     if created:
         enrollment.active()
+        messages.success(request, 'Inscrição efetuada com sucesso.')
+    else:
+        messages.info(request, 'Você já está inscrito no curso.')
     return redirect('user:dashboard')

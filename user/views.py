@@ -1,10 +1,11 @@
+from django.contrib import messages
+from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render, get_object_or_404
+from django.conf import settings
 
 from .forms import RegisterForm, EditUserForm
-from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
-from django.conf import settings
 
 # View para cadastro de usuários no django
 def register(request):
@@ -12,6 +13,9 @@ def register(request):
     form = RegisterForm(request.POST or None)
     if form.is_valid():
         user = form.save()
+
+        # Messagem de sucesso para view register
+        messages.success(request, 'Parabéns, cadastro concluído com sucesso.')
 
         # Login automático após cadastro
         user = authenticate(
@@ -24,8 +28,7 @@ def register(request):
         
         # Retorno para tela de URL após cadastro
         # return redirect(settings.LOGIN_URL)
-    context = {'form': form}
-    return render(request, template_name, context)
+    return render(request, template_name, {'form': form})
 
 # View para painel do usuário com requisição de login
 # Redireciona ao login automaticamente caso não esteja logado
@@ -38,23 +41,19 @@ def dashboard(request):
 @login_required
 def edit_user(request):
     template_name = 'user/edit_user.html'
-    context = {}
     form = EditUserForm(request.POST or None, instance=request.user)
     if form.is_valid():
         form.save()
         form = EditUserForm(instance=request.user)
-        context['success'] = True
-    context['form'] = form
-    return render(request, template_name, context)
+        messages.success(request, 'Cadastro atualizado.')
+    return render(request, template_name, {'form': form})
 
 # View para alterar senha do usuário
 @login_required
 def edit_password(request):
     template_name = 'user/edit_password.html'
-    context = {}
     form = PasswordChangeForm(data=request.POST, user=request.user)
     if form.is_valid():
         form.save()
-        context['success'] = True 
-    context['form'] = form
-    return render(request, template_name, context)
+        messages.success(request, 'Senha atualizada.')
+    return render(request, template_name, {'form': form})

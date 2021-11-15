@@ -1,22 +1,31 @@
 {% extends './base.html' %}
 {% block content %} 
-<div class="content">
-    {% if cursos %}
-    <h3>Cursos disponíveis</h3>
-    {% endif %} 
-    <ul>
-        {% for c in cursos %} 
-        <li>
-            {% if c.image %} 
-            <img class="pure-image" src="{{ c.image.url }}">
-            {% endif %} 
-            <h4><a href="{% url 'curso:detail' c.slug %}">{{ c.name }}</a></h4>
-            <div>{{ c.description|linebreaks }}</div>
-        </li>
-        {% empty %} 
-        <h3>Nenhum curso disponível na plataforma!</h3>
-        {% endfor %} 
-    </ul>
+<div class="pure-g content-ribbon">
+    {% if messages %}
+    <aside class="pure-u-1">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    </aside>
+    {% endif %}
+    <div class="content pure-u-1">
+        {% if cursos %}
+        <h3>Cursos disponíveis</h3>
+        {% endif %} 
+        <ul>
+            {% for c in cursos %} 
+            <li>
+                {% if c.image %} 
+                <img class="pure-image" src="{{ c.image.url }}">
+                {% endif %} 
+                <h4><a href="{% url 'curso:detail' c.slug %}">{{ c.name }}</a></h4>
+                <div>{{ c.description|linebreaks }}</div>
+            </li>
+            {% empty %} 
+            <h3>Nenhum curso disponível na plataforma!</h3>
+            {% endfor %} 
+        </ul>
+    </div>
 </div>
 {% endblock %} 
 

@@ -1,18 +1,27 @@
 {% extends './base.html' %} 
 {% block content %} 
-<form class="pure-form pure-form-stacked" action="." method="POST">
-    <fieldset>
-        <legend><h3>Página de Contato:</h3></legend>
-    </fieldset>
-    {% if alert %} 
-    <h4 style="color: red;">{{ alert }}</h4>
-    {% endif %} 
-    <table>
-        <tbody>
-            {% csrf_token %} 
-            {{ form.as_table }} 
-        </tbody>
-    </table>
-    <input class="pure-button" type="submit" name="Enviar">
-</form>
+<div class="pure-g content-ribbon">
+    {% if messages %}
+    <aside class="pure-u-1">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    </aside>
+    {% endif %}
+    <form class="pure-u-1 pure-form pure-form-stacked" action="." method="POST">
+        <fieldset>
+            <legend><h3>Página de Contato:</h3></legend>
+        </fieldset>
+        {% if alert %} 
+        <h4 style="color: red;">{{ alert }}</h4>
+        {% endif %} 
+        <table>
+            <tbody>
+                {% csrf_token %} 
+                {{ form.as_table }} 
+            </tbody>
+        </table>
+        <input class="pure-button" type="submit" name="Enviar">
+    </form>
+</div>
 {% endblock %} 
