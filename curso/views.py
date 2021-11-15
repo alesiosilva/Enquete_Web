@@ -60,4 +60,4 @@ def enrollment(request, slug):
         messages.success(request, 'Inscrição efetuada com sucesso.')
     else:
         messages.info(request, 'Você já está inscrito no curso.')
-    return redirect('user:dashboard')
+    return redirect('user:panel')

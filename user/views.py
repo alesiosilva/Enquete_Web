@@ -33,8 +33,8 @@ def register(request):
 # View para painel do usuário com requisição de login
 # Redireciona ao login automaticamente caso não esteja logado
 @login_required    
-def dashboard(request):
-    template_name = 'user/dashboard.html'
+def panel(request):
+    template_name = 'user/panel.html'
     return render(request, template_name)
 
 # View para edição dos campos do usuário
