@@ -29,6 +29,20 @@ label {
     height: auto;
 }
 
+a,
+a:before{
+    background: none;
+    border: none;
+    color: #1f8dd6;    
+}
+a:hover,
+a:focus {
+    background: none;
+    border: none;
+    color: #66a4ce;
+}
+
+
 /*
  * -- LAYOUT STYLES --
  * These are some useful classes which I will need
@@ -45,7 +59,6 @@ label {
 .is-center {
     text-align: center;
 }
-
 
 
 /*
@@ -71,8 +84,8 @@ label {
  * I want my pure-button elements to look a little different
  */
 .pure-button {
-    background-color: #1f8dd6;
-    color: white;
+    /*background-color: #1f8dd6;
+    color: white;*/
     padding: 0.5em 2em;
     border-radius: 5px;
 }
@@ -137,7 +150,7 @@ a.pure-button-primary {
     overflow: hidden;
     /* The following styles are required for the "scroll-over" effect */
     width: 100%;
-    height: 88%;
+    height: 50%;
     top: 0;
     left: 0;
     position: fixed !important;
@@ -146,22 +159,22 @@ a.pure-button-primary {
 .splash {
     /* absolute center .splash within .splash-container */
     width: 80%;
-    height: 50%;
+    height: 40%;
     margin: auto;
     position: absolute;
-    top: 100px; left: 0; bottom: 0; right: 0;
+    top: 0px; left: 0; bottom: 0; right: 0;
     text-align: center;
     text-transform: uppercase;
 }
 
 /* This is the main heading that appears on the blue section */
 .splash-head {
-    font-size: 20px;
+    font-size: 100px;
     font-weight: bold;
     color: white;
     border: 3px solid white;
     padding: 1em 1.6em;
-    font-weight: 100;
+    font-weight: 50;
     border-radius: 5px;
     line-height: 1em;
 }
@@ -180,7 +193,7 @@ a.pure-button-primary {
 .content-wrapper {
     /* These styles are required for the "scroll-over" effect */
     position: absolute;
-    top: 87%;
+    top: 40%;
     width: 100%;
     min-height: 12%;
     z-index: 2;
@@ -262,7 +275,7 @@ a.pure-button-primary {
     }
 
     .splash-head {
-        font-size: 250%;
+        font-size: 150%;
     }
 
 
@@ -281,6 +294,6 @@ a.pure-button-primary {
 @media (min-width: 78em) {
     /* We increase the header font size even more */
     .splash-head {
-        font-size: 300%;
+        font-size: 150%;
     }
 }

@@ -1,14 +1,14 @@
 {% extends 'base.html' %} 
 {% load courses_tags %}
 {% block content %} 
+{% if messages %}
+<aside class="pure-u-1">
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+</aside>
+{% endif %}
 <div class="pure-g content-ribbon">
-    {% if messages %}
-    <aside class="pure-u-1">
-        {% for message in messages %}
-        <p>{{ message }}</p>
-        {% endfor %}
-    </aside>
-    {% endif %}
     <div class="pure-u-1">
         <ul class="breadcrumb">
             {% block breadcrumb %} 
@@ -16,12 +16,12 @@
             {% endblock %} 
         </ul>
     </div>
-    <div class="pure-u-1-3">
-        <div class="pure-meu pure-menu-open" >
+    <div class="pure-u-1-5">
+        <div class="pure-menu pure-menu-open" >
             <a class="pure-menu-heading">Meus Cursos</a>
             {% my_courses user %}
         </div>
-        <div class="pure-meu pure-menu-open" >
+        <div class="pure-menu pure-menu-open" >
         <a class="pure-menu-heading">Minha Conta</a></li>
             <ul>
                 <li><a href="{% url 'user:edit_user' %}">Editar Conta</a></li>
@@ -29,7 +29,7 @@
             </ul>
         </div>
     </div>
-    <div class="pure-u-2-3">
+    <div class="pure-u-2-5">
         <div class="inner">
             {% block panel_content %} 
             <p><strong>Usuário: </strong>{{ user }}</p>

@@ -1,27 +1,48 @@
 {% extends 'base.html' %} 
 {% block content %} 
-<div class="pure-g content-ribbon">
-    {% if messages %}
-    <aside class="pure-u-1">
-        {% for message in messages %}
-        <p>{{ message }}</p>
-        {% endfor %}
-    </aside>
-    {% endif %}
-    <form class="pure-u-1 pure-form pure-form-stacked" action="." method="POST">
-        <fieldset>
-            <legend><h3>Página de Contato:</h3></legend>
-        </fieldset>
-        {% if alert %} 
-        <h4 style="color: red;">{{ alert }}</h4>
-        {% endif %} 
-        <table>
-            <tbody>
-                {% csrf_token %} 
-                {{ form.as_table }} 
-            </tbody>
-        </table>
-        <input class="pure-button" type="submit" name="Enviar">
-    </form>
+
+{% if messages %}
+<aside class="pure-u-1">
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+</aside>
+{% endif %}
+
+<h2 class="content-head is-center">Fale Conosco</h2>
+
+<div class="pure-g">
+    <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+        <form class="pure-form pure-form-stacked" action="." method="POST">
+            <fieldset>
+                <legend><h3>Formulário de Contato:</h3></legend>
+                <table>
+                    <tbody>
+                        {% csrf_token %} 
+                        {{ form.as_table }} 
+                    </tbody>
+                </table>
+                <button type="submit" style="width: 45%;" class="pure-button pure-button-primary">Enviar</button>
+                <button type="reset" style="width: 45%;" class="pure-button">Limpar</button>
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+        <h4>Contact Us</h4>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.
+        </p>
+
+        <h4>More Information</h4>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+    </div>
 </div>
+
 {% endblock %} 

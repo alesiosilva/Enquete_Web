@@ -1,30 +1,69 @@
 {% extends 'base.html' %}
 {% block content %} 
-<div class="pure-g content-ribbon">
-    {% if messages %}
-    <aside class="pure-u-1">
-        {% for message in messages %}
-        <p>{{ message }}</p>
-        {% endfor %}
-    </aside>
-    {% endif %}
-    <div class="content pure-u-1">
-        {% if cursos %}
-        <h3>Cursos disponíveis</h3>
-        {% endif %} 
-        <ul>
-            {% for c in cursos %} 
-            <li>
-                {% if c.image %} 
-                <img class="pure-image" src="{{ c.image.url }}">
-                {% endif %} 
-                <h4><a href="{% url 'curso:detail' c.slug %}">{{ c.name }}</a></h4>
-                <div>{{ c.description|linebreaks }}</div>
-            </li>
-            {% empty %} 
-            <h3>Nenhum curso disponível na plataforma!</h3>
-            {% endfor %} 
-        </ul>
+
+{% if messages %}
+<aside class="pure-u-1">
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+</aside>
+{% endif %}
+
+{% if cursos %}
+<h2 class="content-head is-center">Cursos disponíveis</h2>
+{% endif %}
+
+<div class="pure-g">
+    {% for c in cursos %} 
+    <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+
+        <h3 class="content-subhead">
+            <a class="pure-link" href="{% url 'curso:detail' c.slug %}">
+                <i class="fa fa-th-large"></i>
+                {{ c.name }}
+            </a>
+        </h3>
+        <div>{{ c.description|linebreaks }}</div>
+    </div>
+    {% empty %} 
+    <h3>Nenhum curso disponível na plataforma!</h3>
+    {% endfor %} 
+
+    <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+        <h3 class="content-subhead">
+            <i class="fa fa-rocket"></i>
+            Get Started Quickly
+        </h3>
+        <p>
+            Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
+        </p>
+    </div>
+    <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+        <h3 class="content-subhead">
+            <i class="fa fa-mobile"></i>
+            Responsive Layouts
+        </h3>
+        <p>
+            Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
+        </p>
+    </div>
+    <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+        <h3 class="content-subhead">
+            <i class="fa fa-th-large"></i>
+            Modular
+        </h3>
+        <p>
+            Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
+        </p>
+    </div>
+    <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+        <h3 class="content-subhead">
+            <i class="fa fa-check-square-o"></i>
+            Plays Nice
+        </h3>
+        <p>
+            Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
+        </p>
     </div>
 </div>
 {% endblock %} 

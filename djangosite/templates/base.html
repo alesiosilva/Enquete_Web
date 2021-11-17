@@ -1,47 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DjangoSite - Enquetes</title>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+    <meta name="description" content="A layout example that shows off a responsive product landing page.">
+    <title>DjangoSite</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="{% static 'styles.css'%}">
 </head>
 <body>
-    <div id="body" style="width:1200px; margin-left: auto; margin-right: auto;">
-        <div class="pure-menu pure-menu-horizontal">
-            <a href="{% url 'curso:index' %}" class="pure-menu-heading pure-menu-link">CURSOS - DjangoSite</a>
-            <ul class="pure-menu-list">
-                <li class="pure-menu-item">
-                    <a href="{% url 'curso:index' %}" class="pure-menu-link">Cursos</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="{% url 'enquete:index' %}" class="pure-menu-link">Enquetes</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="{% url 'enquete:allresults' %}" class="pure-menu-link">Resultados</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="{% url 'curso:contact' %}" class="pure-menu-link">Contato</a>
-                </li>
-                {% if user.is_authenticated %} 
-                <li class="pure-menu-item">
-                    <a href="{% url 'user:panel' %}" class="pure-menu-link">Painel</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="{% url 'user:logout' %}" class="pure-menu-link">Sair</a>
-                </li>
-                {% else %} 
-                <li class="pure-menu-item">
-                    <a href="{% url 'user:login' %}" class="pure-menu-link">Entrar</a>
-                </li>
-                {% endif %} 
-            </ul>
+
+<div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+        <a href="{% url 'curso:index' %}" class="pure-menu-heading pure-menu-link">DjangoSite</a>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item">
+                <a href="{% url 'curso:index' %}" class="pure-menu-link">Cursos</a>
+            </li>
+            <li class="pure-menu-item">
+                <a href="{% url 'enquete:index' %}" class="pure-menu-link">Enquetes</a>
+            </li>
+            <li class="pure-menu-item">
+                <a href="{% url 'enquete:allresults' %}" class="pure-menu-link">Resultados</a>
+            </li>
+            <li class="pure-menu-item">
+                <a href="{% url 'curso:contact' %}" class="pure-menu-link">Contato</a>
+            </li>
+            {% if user.is_authenticated %} 
+            <li class="pure-menu-item">
+                <a href="{% url 'user:panel' %}" class="pure-menu-link">Painel</a>
+            </li>
+            <li class="pure-menu-item">
+                <a href="{% url 'user:logout' %}" class="pure-menu-link">Sair</a>
+            </li>
+            {% else %} 
+            <li class="pure-menu-item">
+                <a href="{% url 'user:login' %}" class="pure-menu-link">Entrar</a>
+            </li>
+            {% endif %} 
+        </ul>
+    </div>
+</div>
+
+<div class="splash-container">
+    <div class="splash">
+        <h1 class="splash-head">DjangoSite</h1>
+        <p class="splash-subhead">
+            Plataforma de Cursos Online
+        </p>
+        <p>
+            <a href="{% url 'curso:index' %}" class="pure-button pure-button-primary">Get Started</a>
+        </p>
+    </div>
+</div>
+
+<div class="content-wrapper">
+    <div class="content">
+    {% block content %} 
+    {% endblock %} 
+
+    </div>
+    <div class="content">
+        <h2 class="content-head is-center"></h2>
+
+        <div class="pure-g">
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                <h3 class="content-subhead">
+                    <i class="fa"></i>
+                </h3>
+                <p>
+
+                </p>
+            </div>
+    </div>
+
+    <div class="ribbon l-box-lrg pure-g">
+        <div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
+            <img width="300" alt="File Icons" class="pure-img-responsive" src="">
         </div>
-        <div class="">
-            {% block content %}
-            {% endblock %}
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
+
+            <h2 class="content-head content-head-ribbon">Laboris nisi ut aliquip.</h2>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor.
+            </p>
         </div>
     </div>
+
+    <div class="footer l-box is-center">
+        Desenvolvido por Alésio Torres em processo do curso Django para Web com prof. Gileno Alves.
+    </div>
+
+</div>
+
 </body>
 </html>
