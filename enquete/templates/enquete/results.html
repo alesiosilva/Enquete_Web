@@ -4,7 +4,7 @@
     <ul>
         {% for l in latest_question_list %} 
             <li>
-                <h3>{{ l.question_text }}</h3>
+                <h3 class="content-head">{{ l.question_text }}</h3>
                 <ul>
                     {% for q in l.choice_set.all %} 
                     <li>{{ q.choice_text }} || {{ q.votes }} voto{{ q.votes|pluralize }}</li>
@@ -14,7 +14,7 @@
         {% endfor %} 
     </ul>
 {% else %} 
-    <h3>{{ question.question_text }}</h3>
+    <h3 class="content-head">{{ question.question_text }}</h3>
 
     <ul>
         {% for choice in question.choice_set.all %} 

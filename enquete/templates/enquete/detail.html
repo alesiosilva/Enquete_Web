@@ -3,14 +3,19 @@
 <form class="pure-form" action="{% url 'enquete:vote' question.id %}" method="post">
     {% csrf_token %} 
     <fieldset>
-        <legend><h3>{{ question.question_text }}</h3></legend>
+        <legend><h3 class="content-head">{{ question.question_text }}</h3></legend>
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %} 
         {% for choice in question.choice_set.all %}
-            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+        <label class="" for="choice{{ forloop.counter }}">
+            <input style="width: 3%;" type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">{{ choice.choice_text }}
+        </label>
+        <br>
         {% endfor %} 
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Votar</button>
+            <a class="pure-button" href="{% url 'enquete:results' question.id %}">Resultado</a>
+        </div>
     </fieldset>
-    <input type="submit" class="pure-button" value="Votar">
-    <a class="pure-button" href="{% url 'enquete:results' question.id %}">Resultado</a>
 </form>
+
 {% endblock %}
